@@ -1,0 +1,5 @@
+NAME                                IMAGE                                 COMMAND                  SERVICE                 CREATED          STATUS                        PORTS
+logistica-db-1                      postgres:16.10-alpine                 "docker-entrypoint.s…"   db                      57 minutes ago   Up 41 seconds (healthy)       5432/tcp
+logistica-servico-dados-1           logistica/servico-dados:1.0           "sh -c 'python init_…"   servico-dados           57 minutes ago   Up 44 seconds (healthy)       0.0.0.0:8001->8001/tcp, [::]:8001->8001/tcp
+logistica-servico-processamento-1   logistica/servico-processamento:1.0   "gunicorn -b 0.0.0.0…"   servico-processamento   57 minutes ago   Up About a minute (healthy)   0.0.0.0:8002->8002/tcp, [::]:8002->8002/tcp
+logistica-servico-relatorio-1       logistica/servico-relatorio:1.0       "gunicorn -b 0.0.0.0…"   servico-relatorio       57 minutes ago   Up 56 minutes (healthy)       0.0.0.0:8003->8003/tcp, [::]:8003->8003/tcp

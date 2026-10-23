@@ -1,0 +1,149 @@
+secao,item,metrica,valor
+base,cadastro,motoristas,20
+base,cadastro,veiculos,12
+base,cadastro,entregas,400
+resumo,geral,atrasadas,85
+resumo,geral,atraso_maximo_min,298
+resumo,geral,atraso_medio_geral_min,15.75
+resumo,geral,atraso_medio_min,62.82
+resumo,geral,custo_por_km,3.69
+resumo,geral,custo_total,30629.76
+resumo,geral,distancia_total_km,8310.35
+resumo,geral,finalizadas,339
+resumo,geral,no_prazo,254
+resumo,geral,pct_no_prazo,74.93
+resumo,geral,total,400
+status,CANCELADA,entregas,10
+status,EM_ROTA,entregas,30
+status,ENTREGUE,entregas,339
+status,FALHA,entregas,21
+regioes,Centro,atraso_medio_min,76.78
+regioes,Centro,custo_por_km,3.2
+regioes,Centro,entregues,69
+regioes,Centro,pct_no_prazo,86.96
+regioes,Centro,total,81
+regioes,Zona Sul,atraso_medio_min,92.36
+regioes,Zona Sul,custo_por_km,3.53
+regioes,Zona Sul,entregues,61
+regioes,Zona Sul,pct_no_prazo,81.97
+regioes,Zona Sul,total,77
+regioes,Zona Oeste,atraso_medio_min,53.27
+regioes,Zona Oeste,custo_por_km,3.82
+regioes,Zona Oeste,entregues,74
+regioes,Zona Oeste,pct_no_prazo,70.27
+regioes,Zona Oeste,total,85
+regioes,Zona Leste,atraso_medio_min,47.1
+regioes,Zona Leste,custo_por_km,3.98
+regioes,Zona Leste,entregues,67
+regioes,Zona Leste,pct_no_prazo,68.66
+regioes,Zona Leste,total,78
+regioes,Zona Norte,atraso_medio_min,66.91
+regioes,Zona Norte,custo_por_km,3.62
+regioes,Zona Norte,entregues,68
+regioes,Zona Norte,pct_no_prazo,67.65
+regioes,Zona Norte,total,79
+ranking,1 - Paulo Roberto Mendes,atraso_medio_min,31.0
+ranking,1 - Paulo Roberto Mendes,custo_por_km,4.04
+ranking,1 - Paulo Roberto Mendes,distancia_total_km,499.03
+ranking,1 - Paulo Roberto Mendes,entregas_finalizadas,21
+ranking,1 - Paulo Roberto Mendes,motorista_id,8
+ranking,1 - Paulo Roberto Mendes,pct_no_prazo,95.24
+ranking,2 - Rafael Henrique Costa,atraso_medio_min,59.0
+ranking,2 - Rafael Henrique Costa,custo_por_km,3.43
+ranking,2 - Rafael Henrique Costa,distancia_total_km,268.0
+ranking,2 - Rafael Henrique Costa,entregas_finalizadas,13
+ranking,2 - Rafael Henrique Costa,motorista_id,4
+ranking,2 - Rafael Henrique Costa,pct_no_prazo,92.31
+ranking,3 - André Luís Carvalho,atraso_medio_min,33.33
+ranking,3 - André Luís Carvalho,custo_por_km,3.77
+ranking,3 - André Luís Carvalho,distancia_total_km,609.8
+ranking,3 - André Luís Carvalho,entregas_finalizadas,25
+ranking,3 - André Luís Carvalho,motorista_id,18
+ranking,3 - André Luís Carvalho,pct_no_prazo,88.0
+ranking,4 - Lucas Gabriel Ferreira,atraso_medio_min,184.0
+ranking,4 - Lucas Gabriel Ferreira,custo_por_km,3.73
+ranking,4 - Lucas Gabriel Ferreira,distancia_total_km,382.12
+ranking,4 - Lucas Gabriel Ferreira,entregas_finalizadas,16
+ranking,4 - Lucas Gabriel Ferreira,motorista_id,9
+ranking,4 - Lucas Gabriel Ferreira,pct_no_prazo,87.5
+ranking,5 - Leandro Gomes Monteiro,atraso_medio_min,21.33
+ranking,5 - Leandro Gomes Monteiro,custo_por_km,3.34
+ranking,5 - Leandro Gomes Monteiro,distancia_total_km,493.14
+ranking,5 - Leandro Gomes Monteiro,entregas_finalizadas,19
+ranking,5 - Leandro Gomes Monteiro,motorista_id,20
+ranking,5 - Leandro Gomes Monteiro,pct_no_prazo,84.21
+ranking,6 - Marcelo Antunes Ribeiro,atraso_medio_min,89.67
+ranking,6 - Marcelo Antunes Ribeiro,custo_por_km,3.03
+ranking,6 - Marcelo Antunes Ribeiro,distancia_total_km,302.38
+ranking,6 - Marcelo Antunes Ribeiro,entregas_finalizadas,16
+ranking,6 - Marcelo Antunes Ribeiro,motorista_id,17
+ranking,6 - Marcelo Antunes Ribeiro,pct_no_prazo,81.25
+ranking,7 - Bruno César Barbosa,atraso_medio_min,121.5
+ranking,7 - Bruno César Barbosa,custo_por_km,3.49
+ranking,7 - Bruno César Barbosa,distancia_total_km,425.55
+ranking,7 - Bruno César Barbosa,entregas_finalizadas,20
+ranking,7 - Bruno César Barbosa,motorista_id,11
+ranking,7 - Bruno César Barbosa,pct_no_prazo,80.0
+ranking,8 - Rodrigo Teixeira Cardoso,atraso_medio_min,38.0
+ranking,8 - Rodrigo Teixeira Cardoso,custo_por_km,4.2
+ranking,8 - Rodrigo Teixeira Cardoso,distancia_total_km,464.23
+ranking,8 - Rodrigo Teixeira Cardoso,entregas_finalizadas,14
+ranking,8 - Rodrigo Teixeira Cardoso,motorista_id,14
+ranking,8 - Rodrigo Teixeira Cardoso,pct_no_prazo,78.57
+ranking,9 - Ricardo Almeida Santos,atraso_medio_min,32.0
+ranking,9 - Ricardo Almeida Santos,custo_por_km,4.09
+ranking,9 - Ricardo Almeida Santos,distancia_total_km,234.46
+ranking,9 - Ricardo Almeida Santos,entregas_finalizadas,9
+ranking,9 - Ricardo Almeida Santos,motorista_id,7
+ranking,9 - Ricardo Almeida Santos,pct_no_prazo,77.78
+ranking,10 - Anderson Luiz Pereira,atraso_medio_min,75.0
+ranking,10 - Anderson Luiz Pereira,custo_por_km,3.69
+ranking,10 - Anderson Luiz Pereira,distancia_total_km,386.79
+ranking,10 - Anderson Luiz Pereira,entregas_finalizadas,17
+ranking,10 - Anderson Luiz Pereira,motorista_id,5
+ranking,10 - Anderson Luiz Pereira,pct_no_prazo,76.47
+atrasos_criticos,geral,total,7
+atrasos_criticos,entrega 350,atraso_min,298
+atrasos_criticos,entrega 350,entregue_em,2026-05-19T23:54:00
+atrasos_criticos,entrega 350,motorista_id,9
+atrasos_criticos,entrega 350,prazo_previsto,2026-05-19T18:56:00
+atrasos_criticos,entrega 350,regiao,Zona Sul
+atrasos_criticos,entrega 198,atraso_min,297
+atrasos_criticos,entrega 198,entregue_em,2026-04-12T17:27:00
+atrasos_criticos,entrega 198,motorista_id,11
+atrasos_criticos,entrega 198,prazo_previsto,2026-04-12T12:30:00
+atrasos_criticos,entrega 198,regiao,Centro
+atrasos_criticos,entrega 175,atraso_min,271
+atrasos_criticos,entrega 175,entregue_em,2026-04-08T22:33:00
+atrasos_criticos,entrega 175,motorista_id,3
+atrasos_criticos,entrega 175,prazo_previsto,2026-04-08T18:02:00
+atrasos_criticos,entrega 175,regiao,Zona Oeste
+atrasos_criticos,entrega 354,atraso_min,249
+atrasos_criticos,entrega 354,entregue_em,2026-05-21T17:19:00
+atrasos_criticos,entrega 354,motorista_id,13
+atrasos_criticos,entrega 354,prazo_previsto,2026-05-21T13:10:00
+atrasos_criticos,entrega 354,regiao,Zona Sul
+atrasos_criticos,entrega 133,atraso_min,234
+atrasos_criticos,entrega 133,entregue_em,2026-03-31T23:13:00
+atrasos_criticos,entrega 133,motorista_id,10
+atrasos_criticos,entrega 133,prazo_previsto,2026-03-31T19:19:00
+atrasos_criticos,entrega 133,regiao,Zona Norte
+atrasos_criticos,entrega 259,atraso_min,185
+atrasos_criticos,entrega 259,entregue_em,2026-04-30T12:44:00
+atrasos_criticos,entrega 259,motorista_id,5
+atrasos_criticos,entrega 259,prazo_previsto,2026-04-30T09:39:00
+atrasos_criticos,entrega 259,regiao,Zona Leste
+atrasos_criticos,entrega 178,atraso_min,181
+atrasos_criticos,entrega 178,entregue_em,2026-04-09T15:46:00
+atrasos_criticos,entrega 178,motorista_id,17
+atrasos_criticos,entrega 178,prazo_previsto,2026-04-09T12:45:00
+atrasos_criticos,entrega 178,regiao,Zona Norte
+outliers_custo,geral,q1,2.27
+outliers_custo,geral,q3,4.01
+outliers_custo,geral,iqr,1.75
+outliers_custo,geral,limite_superior,6.63
+outliers_custo,geral,analisadas,339
+outliers_custo,geral,total,3
+outliers_custo,entrega 324,custo_km,9.52
+outliers_custo,entrega 264,custo_km,8.63
+outliers_custo,entrega 342,custo_km,7.63

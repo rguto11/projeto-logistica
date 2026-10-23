@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Relatório de Desempenho de Entregas</title>
+  <style>
+    body { font-family: Arial, Helvetica, sans-serif; color: #1b1f24; background: #f4f6f8; margin: 0; line-height: 1.45; }
+    header { background: #0b3d66; color: #fff; padding: 20px 24px; }
+    header h1 { margin: 0 0 6px; font-size: 1.6rem; }
+    header p { margin: 2px 0; font-size: 0.9rem; }
+    main { max-width: 1100px; margin: 0 auto; padding: 16px 24px 32px; }
+    h2 { color: #0b3d66; border-bottom: 2px solid #0b3d66; padding-bottom: 4px; margin-top: 28px; font-size: 1.2rem; }
+    .kpis { display: flex; flex-wrap: wrap; gap: 12px; }
+    .kpi { flex: 1 1 200px; background: #fff; border: 1px solid #c9d1d9; border-radius: 6px; padding: 12px 16px; }
+    .kpi .valor { font-size: 1.8rem; font-weight: bold; color: #0b3d66; }
+    .kpi .rotulo { font-size: 0.85rem; color: #3d4752; }
+    table { border-collapse: collapse; width: 100%; background: #fff; margin: 8px 0; font-size: 0.92rem; }
+    caption { text-align: left; font-weight: bold; padding: 4px 0; color: #3d4752; }
+    th, td { border: 1px solid #c9d1d9; padding: 6px 10px; text-align: left; }
+    th { background: #dce6ef; color: #12202d; }
+    td.num { text-align: right; }
+    ul { padding-left: 20px; }
+    footer { font-size: 0.8rem; color: #3d4752; margin-top: 24px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Relatório de Desempenho de Entregas</h1>
+    <p>Gerado em: 2026-10-23T10:01:43-03:00</p>
+    <p>Fontes: http://servico-dados:8001/resumo e http://servico-processamento:8002/metricas/completo</p>
+    <p>Filtros:
+      nenhum
+    </p>
+  </header>
+  <main>
+    
+    <h2>Indicadores gerais</h2>
+    <div class="kpis">
+      <div class="kpi"><div class="valor">400</div><div class="rotulo">Entregas analisadas</div></div>
+      <div class="kpi"><div class="valor">74,93%</div><div class="rotulo">Entregas no prazo</div></div>
+      <div class="kpi"><div class="valor">62,82 min</div><div class="rotulo">Atraso médio (atrasadas)</div></div>
+      <div class="kpi"><div class="valor">R$ 3,69</div><div class="rotulo">Custo por km</div></div>
+    </div>
+
+    <h2>Observações</h2>
+    <ul>
+      <li>74.93% das 339 entregas concluídas chegaram no prazo; atraso médio das atrasadas: 62.82 min.</li><li>Melhor região em pontualidade: Centro (86.96% no prazo).</li><li>Pior região em pontualidade: Zona Norte (67.65% no prazo).</li><li>Motorista com melhor desempenho: Paulo Roberto Mendes (95.24% no prazo).</li><li>7 entregas com atraso crítico (&gt;= 120 min).</li><li>3 entregas com custo por km atípico (regra do IQR).</li>
+    </ul>
+
+    <h2>Base de dados</h2>
+    <table>
+      <caption>Inventário do Serviço de Dados</caption>
+      <thead><tr><th scope="col">Motoristas</th><th scope="col">Veículos</th><th scope="col">Entregas</th></tr></thead>
+      <tbody><tr>
+        <td class="num">20</td>
+        <td class="num">12</td>
+        <td class="num">400</td>
+      </tr></tbody>
+    </table>
+
+    <h2>Entregas por status</h2>
+    <table>
+      <caption>Quantidade de entregas por status</caption>
+      <thead><tr><th scope="col">Status</th><th scope="col">Entregas</th></tr></thead>
+      <tbody>
+        
+        <tr><td>CANCELADA</td><td class="num">10</td></tr>
+        
+        <tr><td>EM_ROTA</td><td class="num">30</td></tr>
+        
+        <tr><td>ENTREGUE</td><td class="num">339</td></tr>
+        
+        <tr><td>FALHA</td><td class="num">21</td></tr>
+        
+      </tbody>
+    </table>
+
+    <h2>Desempenho por região</h2>
+    <table>
+      <caption>Pontualidade e custo por região</caption>
+      <thead><tr>
+        <th scope="col">Região</th><th scope="col">Total</th><th scope="col">Entregues</th>
+        <th scope="col">% no prazo</th><th scope="col">Atraso médio (min)</th><th scope="col">Custo/km (R$)</th>
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Centro</td><td class="num">81</td><td class="num">69</td>
+          <td class="num">86,96</td><td class="num">76,78</td>
+          <td class="num">3,20</td>
+        </tr>
+        
+        <tr>
+          <td>Zona Sul</td><td class="num">77</td><td class="num">61</td>
+          <td class="num">81,97</td><td class="num">92,36</td>
+          <td class="num">3,53</td>
+        </tr>
+        
+        <tr>
+          <td>Zona Oeste</td><td class="num">85</td><td class="num">74</td>
+          <td class="num">70,27</td><td class="num">53,27</td>
+          <td class="num">3,82</td>
+        </tr>
+        
+        <tr>
+          <td>Zona Leste</td><td class="num">78</td><td class="num">67</td>
+          <td class="num">68,66</td><td class="num">47,10</td>
+          <td class="num">3,98</td>
+        </tr>
+        
+        <tr>
+          <td>Zona Norte</td><td class="num">79</td><td class="num">68</td>
+          <td class="num">67,65</td><td class="num">66,91</td>
+          <td class="num">3,62</td>
+        </tr>
+        
+      </tbody>
+    </table>
+
+    <h2>Ranking de motoristas (top 10)</h2>
+    <table>
+      <caption>Motoristas com pelo menos 5 entregas concluídas</caption>
+      <thead><tr>
+        <th scope="col">Posição</th><th scope="col">Motorista</th><th scope="col">Entregas</th>
+        <th scope="col">% no prazo</th><th scope="col">Atraso médio (min)</th><th scope="col">Custo/km (R$)</th>
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          <td class="num">1</td><td>Paulo Roberto Mendes</td><td class="num">21</td>
+          <td class="num">95,24</td><td class="num">31,00</td>
+          <td class="num">4,04</td>
+        </tr>
+        
+        <tr>
+          <td class="num">2</td><td>Rafael Henrique Costa</td><td class="num">13</td>
+          <td class="num">92,31</td><td class="num">59,00</td>
+          <td class="num">3,43</td>
+        </tr>
+        
+        <tr>
+          <td class="num">3</td><td>André Luís Carvalho</td><td class="num">25</td>
+          <td class="num">88,00</td><td class="num">33,33</td>
+          <td class="num">3,77</td>
+        </tr>
+        
+        <tr>
+          <td class="num">4</td><td>Lucas Gabriel Ferreira</td><td class="num">16</td>
+          <td class="num">87,50</td><td class="num">184,00</td>
+          <td class="num">3,73</td>
+        </tr>
+        
+        <tr>
+          <td class="num">5</td><td>Leandro Gomes Monteiro</td><td class="num">19</td>
+          <td class="num">84,21</td><td class="num">21,33</td>
+          <td class="num">3,34</td>
+        </tr>
+        
+        <tr>
+          <td class="num">6</td><td>Marcelo Antunes Ribeiro</td><td class="num">16</td>
+          <td class="num">81,25</td><td class="num">89,67</td>
+          <td class="num">3,03</td>
+        </tr>
+        
+        <tr>
+          <td class="num">7</td><td>Bruno César Barbosa</td><td class="num">20</td>
+          <td class="num">80,00</td><td class="num">121,50</td>
+          <td class="num">3,49</td>
+        </tr>
+        
+        <tr>
+          <td class="num">8</td><td>Rodrigo Teixeira Cardoso</td><td class="num">14</td>
+          <td class="num">78,57</td><td class="num">38,00</td>
+          <td class="num">4,20</td>
+        </tr>
+        
+        <tr>
+          <td class="num">9</td><td>Ricardo Almeida Santos</td><td class="num">9</td>
+          <td class="num">77,78</td><td class="num">32,00</td>
+          <td class="num">4,09</td>
+        </tr>
+        
+        <tr>
+          <td class="num">10</td><td>Anderson Luiz Pereira</td><td class="num">17</td>
+          <td class="num">76,47</td><td class="num">75,00</td>
+          <td class="num">3,69</td>
+        </tr>
+        
+      </tbody>
+    </table>
+
+    
+    <h2>Atrasos críticos</h2>
+    <table>
+      <caption>7 entregas com atraso de pelo menos 120 min (exibindo as 10 maiores)</caption>
+      <thead><tr>
+        <th scope="col">Entrega</th><th scope="col">Motorista</th><th scope="col">Região</th>
+        <th scope="col">Atraso (min)</th><th scope="col">Prazo previsto</th><th scope="col">Entregue em</th>
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          <td class="num">350</td><td class="num">9</td><td>Zona Sul</td>
+          <td class="num">298</td><td>2026-05-19T18:56:00</td><td>2026-05-19T23:54:00</td>
+        </tr>
+        
+        <tr>
+          <td class="num">198</td><td class="num">11</td><td>Centro</td>
+          <td class="num">297</td><td>2026-04-12T12:30:00</td><td>2026-04-12T17:27:00</td>
+        </tr>
+        
+        <tr>
+          <td class="num">175</td><td class="num">3</td><td>Zona Oeste</td>
+          <td class="num">271</td><td>2026-04-08T18:02:00</td><td>2026-04-08T22:33:00</td>
+        </tr>
+        
+        <tr>
+          <td class="num">354</td><td class="num">13</td><td>Zona Sul</td>
+          <td class="num">249</td><td>2026-05-21T13:10:00</td><td>2026-05-21T17:19:00</td>
+        </tr>
+        
+        <tr>
+          <td class="num">133</td><td class="num">10</td><td>Zona Norte</td>
+          <td class="num">234</td><td>2026-03-31T19:19:00</td><td>2026-03-31T23:13:00</td>
+        </tr>
+        
+        <tr>
+          <td class="num">259</td><td class="num">5</td><td>Zona Leste</td>
+          <td class="num">185</td><td>2026-04-30T09:39:00</td><td>2026-04-30T12:44:00</td>
+        </tr>
+        
+        <tr>
+          <td class="num">178</td><td class="num">17</td><td>Zona Norte</td>
+          <td class="num">181</td><td>2026-04-09T12:45:00</td><td>2026-04-09T15:46:00</td>
+        </tr>
+        
+      </tbody>
+    </table>
+
+    
+    <h2>Outliers de custo por km</h2>
+    <table>
+      <caption>Limite superior (Q3 + 1,5 × IQR): R$ 6,63 / km — 3 entregas acima do limite</caption>
+      <thead><tr><th scope="col">Entrega</th><th scope="col">Custo/km (R$)</th></tr></thead>
+      <tbody>
+        
+        <tr><td class="num">324</td><td class="num">9,52</td></tr>
+        
+        <tr><td class="num">264</td><td class="num">8,63</td></tr>
+        
+        <tr><td class="num">342</td><td class="num">7,63</td></tr>
+        
+      </tbody>
+    </table>
+
+    <footer>Dados sintéticos gerados para fins didáticos.</footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ r.titulo }}</title>
+  <style>
+    body { font-family: Arial, Helvetica, sans-serif; color: #1b1f24; background: #f4f6f8; margin: 0; line-height: 1.45; }
+    header { background: #0b3d66; color: #fff; padding: 20px 24px; }
+    header h1 { margin: 0 0 6px; font-size: 1.6rem; }
+    header p { margin: 2px 0; font-size: 0.9rem; }
+    main { max-width: 1100px; margin: 0 auto; padding: 16px 24px 32px; }
+    h2 { color: #0b3d66; border-bottom: 2px solid #0b3d66; padding-bottom: 4px; margin-top: 28px; font-size: 1.2rem; }
+    .kpis { display: flex; flex-wrap: wrap; gap: 12px; }
+    .kpi { flex: 1 1 200px; background: #fff; border: 1px solid #c9d1d9; border-radius: 6px; padding: 12px 16px; }
+    .kpi .valor { font-size: 1.8rem; font-weight: bold; color: #0b3d66; }
+    .kpi .rotulo { font-size: 0.85rem; color: #3d4752; }
+    table { border-collapse: collapse; width: 100%; background: #fff; margin: 8px 0; font-size: 0.92rem; }
+    caption { text-align: left; font-weight: bold; padding: 4px 0; color: #3d4752; }
+    th, td { border: 1px solid #c9d1d9; padding: 6px 10px; text-align: left; }
+    th { background: #dce6ef; color: #12202d; }
+    td.num { text-align: right; }
+    ul { padding-left: 20px; }
+    footer { font-size: 0.8rem; color: #3d4752; margin-top: 24px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>{{ r.titulo }}</h1>
+    <p>Gerado em: {{ r.gerado_em }}</p>
+    <p>Fontes: {{ r.fontes.dados }} e {{ r.fontes.processamento }}</p>
+    <p>Filtros:
+      {% if r.filtros %}{% for k, v in r.filtros.items() %}{{ k }} = {{ v }}{% if not loop.last %}, {% endif %}{% endfor %}
+      {% else %}nenhum{% endif %}
+    </p>
+  </header>
+  <main>
+    {% set res = r.indicadores.resumo %}
+    <h2>Indicadores gerais</h2>
+    <div class="kpis">
+      <div class="kpi"><div class="valor">{{ res.total|br(0) }}</div><div class="rotulo">Entregas analisadas</div></div>
+      <div class="kpi"><div class="valor">{{ res.pct_no_prazo|br }}%</div><div class="rotulo">Entregas no prazo</div></div>
+      <div class="kpi"><div class="valor">{{ res.atraso_medio_min|br }} min</div><div class="rotulo">Atraso médio (atrasadas)</div></div>
+      <div class="kpi"><div class="valor">R$ {{ res.custo_por_km|br }}</div><div class="rotulo">Custo por km</div></div>
+    </div>
+
+    <h2>Observações</h2>
+    <ul>
+      {% for o in r.observacoes %}<li>{{ o }}</li>{% endfor %}
+    </ul>
+
+    <h2>Base de dados</h2>
+    <table>
+      <caption>Inventário do Serviço de Dados</caption>
+      <thead><tr><th scope="col">Motoristas</th><th scope="col">Veículos</th><th scope="col">Entregas</th></tr></thead>
+      <tbody><tr>
+        <td class="num">{{ r.base.motoristas|br(0) }}</td>
+        <td class="num">{{ r.base.veiculos|br(0) }}</td>
+        <td class="num">{{ r.base.entregas|br(0) }}</td>
+      </tr></tbody>
+    </table>
+
+    <h2>Entregas por status</h2>
+    <table>
+      <caption>Quantidade de entregas por status</caption>
+      <thead><tr><th scope="col">Status</th><th scope="col">Entregas</th></tr></thead>
+      <tbody>
+        {% for s, n in r.indicadores.status.items() %}
+        <tr><td>{{ s }}</td><td class="num">{{ n|br(0) }}</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <h2>Desempenho por região</h2>
+    <table>
+      <caption>Pontualidade e custo por região</caption>
+      <thead><tr>
+        <th scope="col">Região</th><th scope="col">Total</th><th scope="col">Entregues</th>
+        <th scope="col">% no prazo</th><th scope="col">Atraso médio (min)</th><th scope="col">Custo/km (R$)</th>
+      </tr></thead>
+      <tbody>
+        {% for g in r.indicadores.regioes %}
+        <tr>
+          <td>{{ g.regiao }}</td><td class="num">{{ g.total|br(0) }}</td><td class="num">{{ g.entregues|br(0) }}</td>
+          <td class="num">{{ g.pct_no_prazo|br }}</td><td class="num">{{ g.atraso_medio_min|br }}</td>
+          <td class="num">{{ g.custo_por_km|br }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <h2>Ranking de motoristas (top 10)</h2>
+    <table>
+      <caption>Motoristas com pelo menos 5 entregas concluídas</caption>
+      <thead><tr>
+        <th scope="col">Posição</th><th scope="col">Motorista</th><th scope="col">Entregas</th>
+        <th scope="col">% no prazo</th><th scope="col">Atraso médio (min)</th><th scope="col">Custo/km (R$)</th>
+      </tr></thead>
+      <tbody>
+        {% for m in r.indicadores.ranking_motoristas %}
+        <tr>
+          <td class="num">{{ m.posicao }}</td><td>{{ m.nome }}</td><td class="num">{{ m.entregas_finalizadas|br(0) }}</td>
+          <td class="num">{{ m.pct_no_prazo|br }}</td><td class="num">{{ m.atraso_medio_min|br }}</td>
+          <td class="num">{{ m.custo_por_km|br }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    {% set crit = r.indicadores.atrasos_criticos %}
+    <h2>Atrasos críticos</h2>
+    <table>
+      <caption>{{ crit.total }} entregas com atraso de pelo menos {{ crit.limite_min }} min (exibindo as 10 maiores)</caption>
+      <thead><tr>
+        <th scope="col">Entrega</th><th scope="col">Motorista</th><th scope="col">Região</th>
+        <th scope="col">Atraso (min)</th><th scope="col">Prazo previsto</th><th scope="col">Entregue em</th>
+      </tr></thead>
+      <tbody>
+        {% for a in crit.itens %}
+        <tr>
+          <td class="num">{{ a.id }}</td><td class="num">{{ a.motorista_id }}</td><td>{{ a.regiao }}</td>
+          <td class="num">{{ a.atraso_min|br(0) }}</td><td>{{ a.prazo_previsto }}</td><td>{{ a.entregue_em }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    {% set out = r.indicadores.outliers_custo %}
+    <h2>Outliers de custo por km</h2>
+    <table>
+      <caption>Limite superior (Q3 + 1,5 × IQR): R$ {{ out.limite_superior|br }} / km — {{ out.total }} entregas acima do limite</caption>
+      <thead><tr><th scope="col">Entrega</th><th scope="col">Custo/km (R$)</th></tr></thead>
+      <tbody>
+        {% for o in out["itens"] %}
+        <tr><td class="num">{{ o.id }}</td><td class="num">{{ o.custo_km|br }}</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <footer>Dados sintéticos gerados para fins didáticos.</footer>
+  </main>
+</body>
+</html>

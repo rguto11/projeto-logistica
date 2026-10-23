@@ -1,0 +1,18 @@
+$ python rodar_testes.py
+=== servico-dados ===
+...................................................................      [100%]
+67 passed in 0.33s
+=== servico-processamento ===
+................................                                         [100%]
+32 passed in 0.66s
+=== servico-relatorio ===
+......................                                                   [100%]
+22 passed in 0.55s
+
+=== Resumo ===
+servico-dados: OK
+servico-processamento: OK
+servico-relatorio: OK
+
+$ ruff check servico-dados servico-processamento servico-relatorio rodar_testes.py --select F,E,W,B,SIM --line-length 120
+All checks passed!

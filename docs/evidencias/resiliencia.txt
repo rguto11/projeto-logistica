@@ -1,0 +1,41 @@
+Teste de resiliencia e idempotencia (stack logistica) - execucao real
+
+[1] Parando servico-processamento
+GET /relatorio (esperado 502 nomeando 'processamento'):
+{"detalhe":"HTTPConnectionPool(host='servico-processamento', port=8002): Max retries exceeded with url: /metricas/completo (Caused by NameResolutionError(\"HTTPConnection(host='servico-processamento', port=8002): Failed to resolve 'servico-processamento' ([Errno -2] Name or service not known)\"))","erro":"falha ao consultar servico dependente","servico":"processamento"}
+
+HTTP 502
+tempo de resposta: 2.1 s
+
+[2] Iniciando servico-processamento novamente
+GET /relatorio apos recuperacao: HTTP 200
+
+[3] Parando servico-dados
+GET /relatorio (esperado 502 nomeando 'dados'):
+{"detalhe":"HTTPConnectionPool(host='servico-dados', port=8001): Max retries exceeded with url: /resumo (Caused by NameResolutionError(\"HTTPConnection(host='servico-dados', port=8001): Failed to resolve 'servico-dados' ([Errno -2] Name or service not known)\"))","erro":"falha ao consultar servico dependente","servico":"dados"}
+
+HTTP 502
+tempo de resposta: 3.1 s
+GET :8002/metricas/resumo (Processamento sem Dados; esperado 502 antes do timeout do Relatorio):
+{"detalhe":"HTTPConnectionPool(host='servico-dados', port=8001): Max retries exceeded with url: /entregas?limit=1000&offset=0 (Caused by NameResolutionError(\"HTTPConnection(host='servico-dados', port=8001): Failed to resolve 'servico-dados' ([Errno -2] Name or service not known)\"))","erro":"servico de dados indisponivel"}
+
+HTTP 502
+tempo de resposta: 5.6 s (2 tentativas, HTTP_TIMEOUT=5 s)
+
+[4] Iniciando servico-dados novamente
+GET /relatorio apos recuperacao: HTTP 200
+
+[5] Idempotencia: docker compose restart servico-dados
+Antes:  {"entregas":400,"motoristas":20,"veiculos":12}
+Depois: {"entregas":400,"motoristas":20,"veiculos":12}
+Log do servico-dados apos reinicio (init_db; as 2 primeiras linhas sao da primeira subida, as demais dos reinicios):
+[init_db] conexao com o banco OK (tentativa 1)
+[init_db] seed aplicado: 20 motoristas, 12 veiculos, 400 entregas
+[init_db] conexao com o banco OK (tentativa 1)
+[init_db] banco ja populado; seed ignorado
+
+[6] Queda do banco: docker compose restart db (Dados deve responder 200 ou 503, nunca 500)
+Codigos HTTP de GET :8001/resumo, 1 por segundo durante 40 s: 503 200 200 200 200 200 200 200 200 200 200 200 200 200 200 200 200 200 200 200 200 200 200 200 200 200 200 200 200 200 200 200 200 200 200 200 200 200 200 200
+Ocorrencias de 500: 0; de 503: 1; de 200: 39
+GET /relatorio ao final: HTTP 200
+Linhas 'erro interno' nos logs do servico-dados: 0

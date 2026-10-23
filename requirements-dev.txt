@@ -1,0 +1,3 @@
+-r servico-dados/requirements-dev.txt
+-r servico-processamento/requirements-dev.txt
+-r servico-relatorio/requirements-dev.txt
